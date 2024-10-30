@@ -23,8 +23,8 @@ class ShopifyConfig {
   /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
   static String? _storefrontAccessToken;
 
-  /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
-  static String? _adminAccessToken;
+  // /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
+  // static String? _adminAccessToken;
 
   /// Your store url.
   ///
@@ -43,11 +43,11 @@ class ShopifyConfig {
   /// The GraphQlClient used for communication with the Storefront API.
   static GraphQLClient? get graphQLClient => _graphQLClient;
 
-  /// The GraphQlClient used for communication with the Storefront API.
-  static GraphQLClient? _graphQLClientAdmin;
+  // /// The GraphQlClient used for communication with the Storefront API.
+  // static GraphQLClient? _graphQLClientAdmin;
 
-  /// The GraphQlClient used for communication with the Storefront API.
-  static GraphQLClient? get graphQLClientAdmin => _graphQLClientAdmin;
+  // /// The GraphQlClient used for communication with the Storefront API.
+  // static GraphQLClient? get graphQLClientAdmin => _graphQLClientAdmin;
 
   /// The Storefront API Version.
   static String get apiVersion => _storefrontApiVersion;
@@ -97,7 +97,7 @@ class ShopifyConfig {
     String? language,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
-    _adminAccessToken = adminAccessToken;
+    // _adminAccessToken = adminAccessToken;
     _storeUrl = !storeUrl.contains('http') ? 'https://$storeUrl' : storeUrl;
     _storefrontApiVersion = storefrontApiVersion;
     _fetchPolicy = cachePolicy;
@@ -112,17 +112,17 @@ class ShopifyConfig {
       cache: GraphQLCache(),
     );
 
-    _graphQLClientAdmin = _adminAccessToken == null
-        ? null
-        : GraphQLClient(
-            link: HttpLink(
-              '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
-              defaultHeaders: {
-                'X-Shopify-Access-Token': _adminAccessToken!,
-                'Accept-Language': language ?? 'en',
-              },
-            ),
-            cache: GraphQLCache(),
-          );
+    //   _graphQLClientAdmin = _adminAccessToken == null
+    //       ? null
+    //       : GraphQLClient(
+    //           link: HttpLink(
+    //             '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
+    //             defaultHeaders: {
+    //               'X-Shopify-Access-Token': _adminAccessToken!,
+    //               'Accept-Language': language ?? 'en',
+    //             },
+    //           ),
+    //           cache: GraphQLCache(),
+    //         );
   }
 }
